@@ -1,0 +1,24 @@
+{
+  "name": "RogueMap",
+  "version": "1.0.0",
+  "description": "Random 2d tiled road map generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Lanagramme:Decatrigramme16@github.com/lanagramme/RogueMap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lanagramme/RogueMap/issues"
+  },
+  "homepage": "https://github.com/lanagramme/RogueMap#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}
