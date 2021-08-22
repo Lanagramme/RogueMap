@@ -19,79 +19,80 @@
 				/* border: 1px solid black; */
 			}
 			.nsew {
-				background: url(assets/terrainTiles_default2.png) -128px -64px;
+				background: url(assets/terrainTiles.png) -128px -64px;
 			}
 			.snew {
-				background: url(assets/terrainTiles_default2.png) -64px -64px;
+				background: url(assets/terrainTiles.png) -64px -64px;
 			}
 			.ns {
-				background: url(assets/terrainTiles_default2.png) -64px 0;
-			}
-			.nse {
-				background: url(assets/terrainTiles_default2.png) -192px 0;
-			}
-			.nsw {
-				background: url(assets/terrainTiles_default2.png) -256px 0;
-			}
-			.new {
-				background: url(assets/terrainTiles_default2.png) -320px 0;
-			}
-			.sew {
-				background: url(assets/terrainTiles_default2.png) -384px 0;
-			}
-			.se {
-				background: url(assets/terrainTiles_default2.png) -192px -64px;
-			}
-			.sw {
-				background: url(assets/terrainTiles_default2.png) -256px -64px;
-			}
-			.nw {
-				background: url(assets/terrainTiles_default2.png) -384px -64px;
-			}
-			.ne {
-				background: url(assets/terrainTiles_default2.png) -320px -64px;
+				background: url(assets/terrainTiles.png) -64px 0;
 			}
 			.ew {
-				background: url(assets/terrainTiles_default2.png) -128px -0;
+				background: url(assets/terrainTiles.png) -64px 0;
+				transform: rotate(90deg);
 			}
+			/* ==== */
+			.nse {
+				background: url(assets/terrainTiles.png) 64px 0;
+			}
+			.sew {
+				background: url(assets/terrainTiles.png) 64px 0;
+				transform: rotate(90deg);
+			}
+			.nsw {
+				background: url(assets/terrainTiles.png) 64px 0;
+				transform: rotate(180deg);
+			}
+			.new {
+				background: url(assets/terrainTiles.png) 64px 0;
+				transform: rotate(270deg);
+			}
+			/* ==== */
+			.sw {
+				background: url(assets/terrainTiles.png) -128px 0;
+			}
+			.nw {
+				background: url(assets/terrainTiles.png) -128px 0;
+				transform: rotate(90deg);
+			}
+			.ne {
+				background: url(assets/terrainTiles.png) -128px 0;
+				transform: rotate(180deg);
+			}
+			.se {
+				background: url(assets/terrainTiles.png) -128px 0;
+				transform: rotate(270deg);
+			}
+			/* ==== */
 			.e {
-				background: url(assets/terrainTiles_default2.png) 64px 0;
-			}
-			.n {
-				background: url(assets/terrainTiles_default2.png) 64px -64px;
-			}
-			.w {
-				background: url(assets/terrainTiles_default2.png) 64px -128px;
+				background: url(assets/terrainTiles.png) 64px 64px;
 			}
 			.s {
-				background: url(assets/terrainTiles_default2.png) 64px -192px;
+				background: url(assets/terrainTiles.png) 64px 64px;
+				transform: rotate(90deg);
+			}
+			.w {
+				background: url(assets/terrainTiles.png) 64px 64px;
+				transform: rotate(180deg);
+			}
+			.n {
+				background: url(assets/terrainTiles.png) 64px 64px;
+				transform: rotate(270deg);
 			}
 			.O {
-				background: url(assets/terrainTiles_default2.png) 0 -0;
+				background: url(assets/terrainTiles.png) 0 0;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="grid">
-			<div class="row">
-				<div class="case O"></div>
-				<div class="case O"></div>
-				<div class="case O"></div>
-			</div>
-			<div class="row">
-				<div class="case O"></div>
-				<div class="case nsew"></div>
-				<div class="case O"></div>
-			</div>
-			<div class="row">
-				<div class="case O"></div>
-				<div class="case O"></div>
-				<div class="case O"></div>
-			</div>
-		</div>
+		<label for="width">width</label> <input type="number" id="width">
+		<label for="height">height</label> <input type="number" id="height">
+		<button onclick="creator()">Generate</button>
+		<button onclick="advance()">Fill</button>
 		<br />
-		<button onclick="creator(9,9)">Generate</button>
-		<button onclick="toadvance()">Fill</button>
+		<br />
+		<div class="grid"></div>
+		<br />
 
 		<script src="JS/jquery-3.6.0.js"></script>
 		<script src="JS/int.js"></script>
