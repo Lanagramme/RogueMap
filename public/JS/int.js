@@ -1,4 +1,5 @@
-const pieces = [
+const 
+	pieces = [
 		{ name: "nsew" },
 		{ name: "snew" },
 		{ name: "nse" },
@@ -17,43 +18,8 @@ const pieces = [
 		{ name: "w" },
 		{ name: "O" },
 	],
-	grid = {},
-	oppose = { n: "s", s: "n", e: "w", w: "e" }
-
-// let count = 1
-
-class grid_idem {
-	constructor(data) {
-		;[this.name, this.x, this.y] = data
-	}
-	around() {
-		let res = []
-		for (let i of this.name) {
-			res.push(grid[this[i]])
-		}
-
-		return res.filter(x => {
-			return x !== undefined
-		})
-	}
-	get coord() {
-		return `x${this.x}y${this.y}`
-	}
-	get n() {
-		return `x${this.x}y${this.y - 1}`
-	}
-	get s() {
-		return `x${this.x}y${this.y + 1}`
-	}
-	get e() {
-		return `x${this.x + 1}y${this.y}`
-	}
-	get w() {
-		return `x${this.x - 1}y${this.y}`
-	}
-}
-
-const cl = console.log,
+	cl = console.log,
+	oppose = { n: "s", s: "n", e: "w", w: "e" },
 	creator = () => {
 		/*
 		========== Création de la grille html et JS ==========
@@ -72,20 +38,6 @@ const cl = console.log,
 
 		let nb_colones = $("#width").val(),
 			nb_lignes = $("#height").val()
-		const randomStart = (nb_colones, nb_lignes) => {
-			/*
-					========== Renvoyer des coordonnées random dans la grille ==========
-		
-					fonctions déclanchées par creator
-				*/
-			randomCoord = MAX => {
-				start = Math.floor(Math.random() * MAX)
-				if (start == 0) return start + 1
-				if (start == MAX - 1) return start - 1
-				return start
-			}
-			return `x${randomCoord(nb_colones)}y${randomCoord(nb_lignes)}`
-		}
 
 		if (isNaN(+nb_lignes) || isNaN(+nb_colones)) {
 			alert("Seule des valeurs numériques sont acceptées")
@@ -99,23 +51,13 @@ const cl = console.log,
 		nb_colones = Math.trunc(nb_colones)
 		nb_lignes = Math.trunc(nb_lignes)
 
+		const randomStart = (nb_colones, nb_lignes) => {
+			return `x${randomCoord(nb_colones)}y${randomCoord(nb_lignes)}`
+		}
+
 		for (i in grid) delete grid[i]
 		$(".grid").html("")
-		for (let ligne = 0; ligne < nb_lignes; ligne++) {
-			const ligne_actuelle = document.createElement("div")
-			ligne_actuelle.classList = "row"
-
-			for (let colone = 0; colone < nb_colones; colone++) {
-				const case_data = new grid_idem(["O", colone, ligne]),
-					html_case = document.createElement("div")
-				html_case.classList = `O`
-				html_case.id = case_data.coord
-				grid[case_data.coord] = case_data
-				ligne_actuelle.appendChild(html_case)
-			}
-
-			$(".grid").append(ligne_actuelle)
-		}
+		grid_generator(nb_colones, nb_lignes)
 		updateCase(randomStart(nb_colones, nb_lignes), pieces[0])
 		updateCase(randomStart(nb_colones, nb_lignes), pieces[1])
 	},
@@ -144,18 +86,20 @@ const cl = console.log,
 					" color: orange; font-weight: 900"
 				)
 
-				const options = { impossibles: [], oblicagoires: [] },
-					around = cible.around()
+				const options = { impossibles: [], oblicagoires: [] }
 
 				for (i of ["n", "s", "e", "w"]) {
 					if (grid.hasOwnProperty(cible[i])) {
 						if (
+							// case non vide n'ayant pas de sortie vers la cible
 							grid[cible[i]].name != "O" &&
 							!grid[cible[i]].name.includes(oppose[i])
 						)
 							options.impossibles.push(i)
+						// case ayant une sortie vers la cile
 						else if (grid[cible[i]].name.includes(oppose[i]))
 							options.oblicagoires.push(i)
+						// case ne faisant pas partie de la grille
 					} else options.impossibles.push(i)
 				}
 				return options
