@@ -19,6 +19,10 @@
   "homepage": "https://github.com/lanagramme/RogueMap#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "jquery": "^3.7.1",
     "nodemon": "^2.0.12"
+  },
+  "devDependencies": {
+    "esbuild": "0.19.8"
   }
 }
